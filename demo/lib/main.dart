@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+import 'nav/routes.dart';
+import 'person_page.dart';
+
 void main() {
   runApp(MyApp());
 }
 
+// This widget is the root of your application.
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,24 +30,32 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'Demo'),
+      onGenerateRoute: (settings) {
+        // Handle /
+        if (settings.name == Routes.home.route) {
+          return MaterialPageRoute(builder: (context) => HomePage());
+        }
+
+        // Handle /person/:name
+        var uri = Uri.parse(settings.name);
+        // Handle more params in the future by checking length
+        if ('/' + uri.pathSegments.first == Routes.person.route &&
+            uri.pathSegments.length == 2) {
+          String name = uri.pathSegments[1];
+          return MaterialPageRoute(builder: (context) => PersonPage(name));
+        }
+
+        // Handle ** or 404
+        return MaterialPageRoute(builder: (context) => HomePage());
+      },
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  final String title; // final => const in javascript
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -53,12 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    /** Can update data inside stateless, but cannot trigger rebuild
+     * of this widget without setState()
+     */
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -76,13 +86,23 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          ElevatedButton(
+            child: Text('More'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        // layout widget. takes a single child and centers.
         child: Column(
           // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
+          // arranges them vertically. fit its
           // children horizontally, and tries to be as tall as its parent.
           //
           // Invoke "debug painting" (press "p" in the console, choose the
