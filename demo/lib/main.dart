@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
+import 'nav/routes.dart';
+import 'person_page.dart';
 
 void main() {
   runApp(MyApp());
 }
 
+// This widget is the root of your application.
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +30,25 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'Demo'),
+      onGenerateRoute: (settings) {
+        // Handle /
+        if (settings.name == Routes.home.route) {
+          return MaterialPageRoute(builder: (context) => HomePage());
+        }
+
+        // Handle /person/:name
+        var uri = Uri.parse(settings.name);
+        // Handle more params in the future by checking length
+        if ('/' + uri.pathSegments.first == Routes.person.route &&
+            uri.pathSegments.length == 2) {
+          String name = uri.pathSegments[1];
+          return MaterialPageRoute(builder: (context) => PersonPage(name));
+        }
+
+        // Handle ** or 404
+        return MaterialPageRoute(builder: (context) => HomePage());
+      },
     );
   }
 }
