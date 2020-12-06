@@ -1,7 +1,8 @@
+import 'package:demo/data/model.dart';
 import 'package:flutter/material.dart';
 
-import '../home_page.dart';
-import '../person_page.dart';
+import '../pages/home_page.dart';
+import '../pages/person_page.dart';
 import 'routes.dart';
 
 class RouteGenerator {
@@ -13,7 +14,7 @@ class RouteGenerator {
     if (settings.name == Routes.home.route) {
       return MaterialPageRoute(builder: (context) => HomePage());
     } else if (settings.name == Routes.person.route) {
-      if (args is String) {
+      if (args is User) {
         return MaterialPageRoute(builder: (context) => PersonPage(args));
       }
     }
