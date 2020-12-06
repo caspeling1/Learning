@@ -12,10 +12,10 @@ class HomePage extends StatelessWidget {
       body: ElevatedButton(
         child: Text('Go to Person page'),
         onPressed: () {
-          print(Routes.person.route + '/John Doe');
           Navigator.pushNamed(
             context,
-            Routes.person.route + '/John Doe',
+            Routes.person.route,
+            arguments: 'John Doe',
           );
         },
       ),
