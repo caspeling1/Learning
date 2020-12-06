@@ -35,6 +35,9 @@ Steps taken to get debugging:
     `flutter config --enable-web`
 5. start app via `flutter run -d chrome` (Optional: add `-v` for verbose debugging)
 
+Dart Tools has many user settings. Go through to set them all.
+6. start via VS chrome debugger F5 hereafter.
+
 ## Debugging Issues/Errors
 
 Emulator not showing up in VSCode? Update Reg:

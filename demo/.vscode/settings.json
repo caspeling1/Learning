@@ -10,5 +10,10 @@
         "editor.suggestSelection": "first",
         "editor.tabCompletion": "onlySnippets",
         "editor.wordBasedSuggestions": false
-    }
+    },
+    "dart.debugExternalLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "dart.openDevTools": "flutter",
+    "dart.analysisServerFolding": false,
+    "editor.foldingStrategy": "indentation"
 }
