@@ -1,7 +1,7 @@
 {
     // https://flutter.dev/docs/development/tools/vs-code#:~:text=Open%20the%20Command%20Palette%20(%20Ctrl,Select%20a%20Project%20location.
 
-    // Flutter: Hot Restart command = Ctrl+Shift+F5
+    // Flutter: Hot Restart command (rebuild) = Ctrl+Shift+F5
     // Flutter: Hot Reload command = Ctrl+F5
 
     "version": "0.2.0",
