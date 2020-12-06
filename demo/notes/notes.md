@@ -40,8 +40,22 @@ https://www.ernegonzal.com/cheatsheet-dart-flutter/
 
 ## Navigation
 
-First screen registration via main.dart via home param.  
-Should contain Scaffold so that we can have other nice things like appBar.
+First screen registration via main.dart via home or initialRoute param and should contain Scaffold. 
+
+[Declarative vs Imperative](https://flutter.dev/docs/get-started/flutter-for/declarative)
+
+Nav 1: imperative style, how to get to route, pop/push/pushNamed/onGenerateRoute  
+Nav 2.0: declarative style, view configurations and let framework handle getting there
+
+[Learning Flutter’s new navigation and routing system](https://medium.com/flutter/learning-flutters-new-navigation-and-routing-system-7c9068155ade)  
+[How to use Flutter Navigator 2.0?](https://www.youtube.com/watch?v=wH16ROWAtAk)
+
+## API calls
+
+Fetching data uses Futures, async operation like observables.  
+[Fetch data](https://flutter.dev/docs/cookbook/networking/fetch-data#testing)  
+
+
 
 ## General Terms
 
