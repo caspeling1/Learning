@@ -20,9 +20,9 @@ Future<User> fetchUser() async {
   }
 }
 
-Future<List<Todo>> fetchUserTodos() async {
-  final response =
-      await http.get('https://jsonplaceholder.typicode.com/users/1/todos');
+Future<List<Todo>> fetchUserTodos(int id) async {
+  final response = await http.get(
+      'https://jsonplaceholder.typicode.com/users/' + id.toString() + '/todos');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,

@@ -10,9 +10,11 @@ class PersonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(user.name + '\'s Todos:'), // short or text falls off screen
+      ),
       body: FutureBuilder<List<Todo>>(
-        future: fetchUserTodos(),
+        future: fetchUserTodos(user.id),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
