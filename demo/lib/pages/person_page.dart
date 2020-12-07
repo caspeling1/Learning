@@ -1,6 +1,7 @@
 import 'package:demo/data/model.dart';
 import 'package:flutter/material.dart';
 import 'package:demo/data/data.dart';
+import 'package:http/http.dart';
 
 class PersonPage extends StatelessWidget {
   final User user;
@@ -14,7 +15,7 @@ class PersonPage extends StatelessWidget {
         title: Text(user.name + '\'s Todos:'), // short or text falls off screen
       ),
       body: FutureBuilder<List<Todo>>(
-        future: fetchUserTodos(user.id),
+        future: fetchUserTodos(user.id, Client()),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

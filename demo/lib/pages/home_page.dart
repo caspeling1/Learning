@@ -1,11 +1,12 @@
 import 'package:demo/data/data.dart';
 import 'package:demo/data/model.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 import '../nav/routes.dart';
 
 class HomePage extends StatelessWidget {
-  final Future<User> futureUser = fetchUser();
+  final Future<User> futureUser = fetchUser(Client());
 
   @override
   Widget build(BuildContext context) {
