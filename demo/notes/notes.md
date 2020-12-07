@@ -54,6 +54,7 @@ Nav 2.0: declarative style, view configurations and let framework handle getting
 
 Fetching data uses Futures, async operation like observables.  
 [Fetch data](https://flutter.dev/docs/cookbook/networking/fetch-data#testing)  
+[State management options](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)  
 
 
 
