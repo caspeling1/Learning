@@ -5,9 +5,12 @@ import 'package:http/http.dart' as http;
 
 import 'model.dart';
 
-Future<User> fetchUser() async {
+/** Use http.client to fetch data, rather than the static http.get() method,
+ * which is difficult to mock.
+ */
+Future<User> fetchUser(http.Client client) async {
   final response =
-      await http.get('https://jsonplaceholder.typicode.com/users/1');
+      await client.get('https://jsonplaceholder.typicode.com/users/1');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -20,8 +23,8 @@ Future<User> fetchUser() async {
   }
 }
 
-Future<List<Todo>> fetchUserTodos(int id) async {
-  final response = await http.get(
+Future<List<Todo>> fetchUserTodos(int id, http.Client client) async {
+  final response = await client.get(
       'https://jsonplaceholder.typicode.com/users/' + id.toString() + '/todos');
 
   if (response.statusCode == 200) {
