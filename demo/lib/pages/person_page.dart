@@ -1,6 +1,6 @@
+import 'package:demo/data/data.dart';
 import 'package:demo/data/model.dart';
 import 'package:flutter/material.dart';
-import 'package:demo/data/data.dart';
 import 'package:http/http.dart';
 
 class PersonPage extends StatelessWidget {
@@ -21,7 +21,7 @@ class PersonPage extends StatelessWidget {
             return ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
-                  Todo item = snapshot.data[index];
+                  var item = snapshot.data[index];
                   return Card(
                     child: ListTile(
                       title: Text(item.title),
@@ -29,7 +29,7 @@ class PersonPage extends StatelessWidget {
                   );
                 });
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text('${snapshot.error}');
           }
 
           // By default, show a loading spinner.

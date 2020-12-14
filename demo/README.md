@@ -1,19 +1,13 @@
-# demo
+## IDE
 
-A new Flutter project.
+VSCode used for developement and documentation.
+Chrome used for debugging and running emulators.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<u>Extentions:</u>  
+\- Flutter  
+\- Dart  
+\- Github Markdown Preview  
+\- Debugger for Chrome
 
 ## Debug Setup (does not work on VM)
 
@@ -33,10 +27,11 @@ Steps taken to get debugging:
     `flutter channel beta` then  
     `flutter upgrade` then  
     `flutter config --enable-web`
-5. start app via `flutter run -d chrome` (Optional: add `-v` for verbose debugging)
+4. start app via `flutter run -d chrome` (Optional: add `-v` for verbose debugging)
 
 Dart Tools has many user settings. Go through to set them all.
-6. start via VS chrome debugger F5 hereafter.
+
+5. start via VS chrome debugger F5 hereafter.
 
 ## Debugging Issues/Errors
 
@@ -48,3 +43,8 @@ https://stackoverflow.com/questions/35483050/opengl-error-of-visual-studio-emula
 https://github.com/flutter/flutter/issues/15451 suggesting --enable-software-rendering flag
 https://stackoverflow.com/questions/34779282/how-to-connect-to-localhost-from-vs-android-emulator
 
+## Basic shortcuts to remember
+
+Control + Shift + R on any piece of text will bring up the flutter refactoring context menu. Use it to extract widgets or wrap with styling type widgets etc.
+
+Control + Shift + P brings up the command palette (VSCode)

@@ -1,0 +1,5 @@
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    slash_for_doc_comments: false

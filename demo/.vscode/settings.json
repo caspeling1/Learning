@@ -1,4 +1,7 @@
 {
+    // "editor.defaultFormatter": "Dart-Code.flutter",
+    "editor.foldingStrategy": "auto",
+    "debug.openDebug": "openOnDebugBreak",
     "[dart]": {
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
@@ -15,5 +18,5 @@
     "dart.debugSdkLibraries": false,
     "dart.openDevTools": "flutter",
     "dart.analysisServerFolding": false,
-    "editor.foldingStrategy": "indentation"
+    "markdown.previewFrontMatter": "show",
 }
