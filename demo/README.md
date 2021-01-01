@@ -9,6 +9,8 @@ Chrome used for debugging and running emulators.
 \- Github Markdown Preview  
 \- Debugger for Chrome
 
+Dummy data to be fed to mocky.io and the futures updated to fetch via api. See js files for json.
+
 ## Debug Setup (does not work on VM)
 
 Steps taken to get debugging:
@@ -42,6 +44,9 @@ OpenGL error. Failed to read remote PID. Failed to connect to IP address.
 https://stackoverflow.com/questions/35483050/opengl-error-of-visual-studio-emulator-for-android
 https://github.com/flutter/flutter/issues/15451 suggesting --enable-software-rendering flag
 https://stackoverflow.com/questions/34779282/how-to-connect-to-localhost-from-vs-android-emulator
+
+Missing methods in models:  
+run `flutter packages pub run build_runner clean` to regenerate the model.g.dart file
 
 ## Basic shortcuts to remember
 

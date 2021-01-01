@@ -12,7 +12,7 @@ class PersonPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(user.name + '\'s Todos:'), // short or text falls off screen
+        title: Text('\'s Todos:'), // short or text falls off screen
       ),
       body: FutureBuilder<List<Todo>>(
         future: fetchUserTodos(user.id, Client()),

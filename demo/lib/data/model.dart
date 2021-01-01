@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'model.g.dart';
@@ -10,43 +11,42 @@ class Event {
   final String description;
   final DateTime start; // should be generating unix in JSON
   final DateTime end; // should be generating unix in JSON
-  final List<num> attendees;
+  final List<User> attendees;
 
+/** Add const to constructor if you want the values to never change */
   Event({
-    this.id,
-    this.created,
-    this.summary,
-    this.description,
-    this.start,
-    this.end,
-    this.attendees,
+    @required this.id,
+    @required this.created,
+    @required this.summary,
+    @required this.description,
+    @required this.start,
+    @required this.end,
+    @required this.attendees,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
   Map<String, dynamic> toJson() => _$EventToJson(this);
 }
 
+@JsonSerializable(nullable: false)
 class User {
-  final String name;
   final int id;
-  final String username;
+  final String email;
+  final String displayName;
+  String responseStatus;
+  String comment;
 
   /** Constructor with named and optional params */
-  User({this.name, this.id, this.username});
+  User({
+    @required this.id,
+    this.email,
+    this.displayName,
+    this.responseStatus,
+    this.comment,
+  });
 
-  /** Function that uses factory keyword to make singleton instance of class.
-   * https://stackoverflow.com/questions/60133252/what-is-the-purpose-of-a-factory-method-in-flutter-dart
-   * https://dart.dev/guides/language/language-tour#factory-constructors
-   * 
-   * Note: Factory constructors have no access to this.
-   */
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      name: json['name'],
-      id: json['id'],
-      username: json['username'],
-    );
-  }
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }
 
 class Todo {

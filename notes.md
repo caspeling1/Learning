@@ -101,11 +101,46 @@ Fetching data uses Futures, async operation like observables.
 [Fetch data](https://flutter.dev/docs/cookbook/networking/fetch-data#testing)  
 [State management options](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)  
 
+---
+## State Management
+
+Lifting state up and above the widgets allow for separation of concern and lean widgets with display logic only.
+
+> Remember that widgets can only be recreated (immutable) so making data go into a widget via a method call is not appropriate. Rather, input via the constructor.
+
+<u>To cover:</u>  
+<strike>Provider</strike>  
+Scope Model  
+Redux 
+
+### Provider
+
+Some call it Scope Model 2.0. Preliminary research shows that it is approriate for small projects all the way to enterprise solutions.
+
+ChangeNotifier: the part that tells the listeners that data has updated. Extend models with this to allow for value updates to be followed by a call that notifies listeners.
+```dart
+class MyModel extends ChangeNotifier {
+  // some fields and getters etc etc here
+
+  // state change functions that invoke notifyListeners()
+  void add(Item item) {
+    _items.add(item);
+    notifyListeners(); // tells widgets to rebuild.
+  }
+
+  void removeAll() {
+    _items.clear();
+    notifyListeners(); // tells widgets to rebuild.
+  }
+}
+```
+
+ChangeNotifierProvider: 
 
 ---
 ## Optimisation
 
-Add `const` before widgets that will never change, to force no rebuild. e.g. `const Text('text')`  
+Add `const` before widgets that will never change, to force no rebuild. e.g. `const Text('text')`. Note  that you can't use const when the constructor is not marked as const.  
 
 [Flutter Best Practices](https://flutter.dev/docs/perf/rendering/best-practices#best-practices)
 

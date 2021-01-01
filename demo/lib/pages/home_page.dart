@@ -1,38 +1,29 @@
+import 'package:demo/components/appbar.dart';
+import 'package:demo/components/user.dart';
 import 'package:demo/data/data.dart';
+import 'package:demo/data/dummy_data/users.dart';
 import 'package:demo/data/model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-import '../nav/routes.dart';
-
 class HomePage extends StatelessWidget {
-  final Future<User> futureUser = fetchUser(Client());
+  final Future<User> users = fetchUser(Client());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
+      appBar: getAppBar(title: 'Home'),
       body: FutureBuilder<User>(
-        future: futureUser,
+        future: users,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView(
-              children: <Widget>[
-                Card(
-                  child: ListTile(
-                    title: Text(snapshot.data.name),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        Routes.person.route,
-                        arguments: snapshot.data,
-                      );
-                    },
-                  ),
-                ),
-              ],
+              // change to using builder later
+              children: DUMMY_USERS
+                  .map((e) => Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      child: UserItem(e.id, e.displayName, e.email)))
+                  .toList(),
             );
 
             // Text(snapshot.data.name);
