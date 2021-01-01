@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'model.dart';
+import 'models/model.dart';
 
 /** Use http.client to fetch data, rather than the static http.get() method,
  * which is difficult to mock.

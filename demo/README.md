@@ -53,3 +53,21 @@ run `flutter packages pub run build_runner clean` to regenerate the model.g.dart
 Control + Shift + R on any piece of text will bring up the flutter refactoring context menu. Use it to extract widgets or wrap with styling type widgets etc.
 
 Control + Shift + P brings up the command palette (VSCode)
+
+## Code Structure
+
+Inspiration and tutorial from:
+- [FilledStacks - Flutter Provider Architecture for State Management](https://www.youtube.com/watch?v=kDEflMYTFlk)  
+- [Flutter Architecture - My Provider Implementation Guide](https://www.filledstacks.com/post/flutter-architecture-my-provider-implementation-guide/)
+
+Core is divided into three folders.
+
+- Models: Contains all the plain data models  
+- Services: Contains the dedicated files that will handle actual business logic  
+- ViewModels: Contains the Provider models for each of the Widget views
+
+UI is also divided into three folders.
+
+- components/Shared: Contains files used in multiple other UI files
+- Views/Pages: Contains the files for the app views
+- components/Widgets: Contains widget files that are too big to keep in the view files.

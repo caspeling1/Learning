@@ -1,4 +1,4 @@
-import '../model.dart';
+import '../models/model.dart';
 
 final DUMMY_EVENTS = [
   Event(

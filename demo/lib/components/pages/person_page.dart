@@ -1,5 +1,5 @@
 import 'package:demo/data/data.dart';
-import 'package:demo/data/model.dart';
+import 'package:demo/data/models/model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 

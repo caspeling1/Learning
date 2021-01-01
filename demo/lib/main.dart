@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'locator.dart';
 import 'nav/route_generator.dart';
 
 void main() {
+  setupLocator(); // Use get_it lib so objects are served up allowing generics
   runApp(MyApp());
 }
 

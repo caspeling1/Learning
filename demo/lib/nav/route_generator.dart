@@ -1,22 +1,22 @@
-import 'package:demo/data/model.dart';
+import 'package:demo/components/appbar.dart';
+import 'package:demo/data/models/model.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/home_page.dart';
-import '../pages/person_page.dart';
-import 'routes.dart';
+import '../components/pages/home_page.dart';
+import '../components/pages/person_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // Getting args passed in while calling Navigator.pushNamed
+    // Getting args passed in when calling Navigator.pushNamed
     final args = settings.arguments;
 
-    // if null, the route is anonymous
-    if (settings.name == Routes.home.route) {
-      return MaterialPageRoute(builder: (context) => HomePage());
-    } else if (settings.name == Routes.person.route) {
-      if (args is User) {
-        return MaterialPageRoute(builder: (context) => PersonPage(args));
-      }
+    switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(builder: (_) => HomePage());
+      case 'person':
+        if (args is User) {
+          return MaterialPageRoute(builder: (context) => PersonPage(args));
+        }
     }
 
     // Handle all other uris and incorrect args
@@ -27,9 +27,7 @@ class RouteGenerator {
   static Route<dynamic> _notFoundPage() {
     return MaterialPageRoute(builder: (context) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text('404: Page Not Found'),
-        ),
+        appBar: getAppBar(title: 'Error'),
         body: Center(
           child: Text('404: Page Not Found'),
         ),
